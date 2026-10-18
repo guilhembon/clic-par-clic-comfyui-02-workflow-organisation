@@ -110,7 +110,7 @@ conversation ne contient pas la charte, c'est le workflow qui la place devant el
 - Module précédent : **Brancher ComfyUI dans Open WebUI** —
   [`clic-par-clic-comfyui-01-brancher`](https://github.com/guilhem-/clic-par-clic-comfyui-01-brancher).
 - Module suivant : **Retoucher une image** (second workflow, modèle de retouche) —
-  `clic-par-clic-comfyui-03-…` (à paraître).
+  [`clic-par-clic-comfyui-03-retouche`](https://github.com/guilhem-/clic-par-clic-comfyui-03-retouche).
 
 ## Licence
 
