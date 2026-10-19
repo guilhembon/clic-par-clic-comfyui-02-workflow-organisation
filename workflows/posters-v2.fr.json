@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 125795286251320,
+      "seed": 190072763943278,
       "steps": 8,
       "cfg": 1,
       "sampler_name": "res_multistep",
@@ -47,7 +47,7 @@
   },
   "9": {
     "inputs": {
-      "filename_prefix": "openwebui/affiche",
+      "filename_prefix": "openwebui/poster",
       "images": [
         "8",
         0
@@ -55,7 +55,7 @@
     },
     "class_type": "SaveImage",
     "_meta": {
-      "title": "Enregistrer Image"
+      "title": "Save Image"
     }
   },
   "11": {
@@ -106,7 +106,7 @@
     },
     "class_type": "UNETLoader",
     "_meta": {
-      "title": "Charger Modèle Diffusion"
+      "title": "Load Diffusion Model"
     }
   },
   "29": {
@@ -115,7 +115,7 @@
     },
     "class_type": "VAELoader",
     "_meta": {
-      "title": "Charger VAE"
+      "title": "Load VAE"
     }
   },
   "30": {
@@ -126,7 +126,7 @@
     },
     "class_type": "CLIPLoader",
     "_meta": {
-      "title": "Charger CLIP"
+      "title": "Load CLIP"
     }
   },
   "33": {
@@ -138,7 +138,7 @@
     },
     "class_type": "ConditioningZeroOut",
     "_meta": {
-      "title": "ConditioningZeroOut"
+      "title": "Conditioning Zero Out"
     }
   },
   "34": {
@@ -149,7 +149,7 @@
     },
     "class_type": "StringConcatenate",
     "_meta": {
-      "title": "Concaténer"
+      "title": "Concatenate Text"
     }
   }
 }

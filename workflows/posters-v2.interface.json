@@ -38,7 +38,7 @@
           "link": null
         },
         {
-          "localized_name": "appareil",
+          "localized_name": "device",
           "name": "device",
           "shape": 7,
           "type": "COMBO",
@@ -90,7 +90,7 @@
       "mode": 0,
       "inputs": [
         {
-          "localized_name": "nom_vae",
+          "localized_name": "vae_name",
           "name": "vae_name",
           "type": "COMBO",
           "widget": {
@@ -145,7 +145,7 @@
       ],
       "outputs": [
         {
-          "localized_name": "CONDITIONNEMENT",
+          "localized_name": "CONDITIONING",
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
@@ -175,7 +175,7 @@
       "mode": 0,
       "inputs": [
         {
-          "localized_name": "échantillons",
+          "localized_name": "samples",
           "name": "samples",
           "type": "LATENT",
           "link": 14
@@ -220,7 +220,7 @@
       "mode": 0,
       "inputs": [
         {
-          "localized_name": "nom_unet",
+          "localized_name": "unet_name",
           "name": "unet_name",
           "type": "COMBO",
           "widget": {
@@ -229,7 +229,7 @@
           "link": null
         },
         {
-          "localized_name": "dtype_poids",
+          "localized_name": "weight_dtype",
           "name": "weight_dtype",
           "type": "COMBO",
           "widget": {
@@ -240,7 +240,7 @@
       ],
       "outputs": [
         {
-          "localized_name": "MODÈLE",
+          "localized_name": "MODEL",
           "name": "MODEL",
           "type": "MODEL",
           "links": [
@@ -295,7 +295,7 @@
       ],
       "outputs": [
         {
-          "localized_name": "CONDITIONNEMENT",
+          "localized_name": "CONDITIONING",
           "name": "CONDITIONING",
           "type": "CONDITIONING",
           "links": [
@@ -310,10 +310,10 @@
         "ver": "0.3.73"
       },
       "widgets_values": [
-        "Description écrite par Open WebUI"
+        "Description written by Open WebUI"
       ],
       "widgets_values_named": {
-        "text": "Description écrite par Open WebUI"
+        "text": "Description written by Open WebUI"
       }
     },
     {
@@ -332,7 +332,7 @@
       "mode": 0,
       "inputs": [
         {
-          "localized_name": "largeur",
+          "localized_name": "width",
           "name": "width",
           "type": "INT",
           "widget": {
@@ -341,7 +341,7 @@
           "link": null
         },
         {
-          "localized_name": "hauteur",
+          "localized_name": "height",
           "name": "height",
           "type": "INT",
           "widget": {
@@ -350,7 +350,7 @@
           "link": null
         },
         {
-          "localized_name": "taille_du_lot",
+          "localized_name": "batch_size",
           "name": "batch_size",
           "type": "INT",
           "widget": {
@@ -402,13 +402,13 @@
       "mode": 0,
       "inputs": [
         {
-          "localized_name": "modèle",
+          "localized_name": "model",
           "name": "model",
           "type": "MODEL",
           "link": 26
         },
         {
-          "localized_name": "décalage",
+          "localized_name": "shift",
           "name": "shift",
           "type": "FLOAT",
           "widget": {
@@ -429,7 +429,7 @@
       ],
       "outputs": [
         {
-          "localized_name": "MODÈLE",
+          "localized_name": "MODEL",
           "name": "MODEL",
           "type": "MODEL",
           "slot_index": 0,
@@ -563,7 +563,7 @@
         "ver": "0.3.64"
       },
       "widgets_values": [
-        125795286251320,
+        190072763943278,
         "randomize",
         8,
         1,
@@ -572,7 +572,7 @@
         1
       ],
       "widgets_values_named": {
-        "seed": 125795286251320,
+        "seed": 190072763943278,
         "control_after_generate": "randomize",
         "steps": 8,
         "cfg": 1,
@@ -603,7 +603,7 @@
           "link": 16
         },
         {
-          "localized_name": "préfixe_du_nom_de_fichier",
+          "localized_name": "filename_prefix",
           "name": "filename_prefix",
           "type": "STRING",
           "widget": {
@@ -626,18 +626,18 @@
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "openwebui/affiche"
+        "openwebui/poster"
       ],
       "widgets_values_named": {
-        "filename_prefix": "openwebui/affiche"
+        "filename_prefix": "openwebui/poster"
       }
     },
     {
       "id": 34,
       "type": "StringConcatenate",
       "pos": [
-        0.00001486501395664419,
-        450.0000149634576
+        0.000014865014026796408,
+        450.00001496345766
       ],
       "size": [
         320,
@@ -666,7 +666,7 @@
           "link": null
         },
         {
-          "localized_name": "délimiteur",
+          "localized_name": "delimiter",
           "name": "delimiter",
           "type": "STRING",
           "widget": {
@@ -677,7 +677,7 @@
       ],
       "outputs": [
         {
-          "localized_name": "CHAÎNE",
+          "localized_name": "STRING",
           "name": "STRING",
           "type": "STRING",
           "links": [
@@ -689,12 +689,12 @@
         "Node name for S&R": "StringConcatenate"
       },
       "widgets_values": [
-        "Style imposé : illustration vectorielle plate, uniquement rose et bleu nuit, fond clair, personnages souriants, aucune marque, aucun texte",
+        "Mandatory style: flat vector illustration, only pink and midnight blue, light background, smiling characters, no brands, no text",
         "",
         ". "
       ],
       "widgets_values_named": {
-        "string_a": "Style imposé : illustration vectorielle plate, uniquement rose et bleu nuit, fond clair, personnages souriants, aucune marque, aucun texte",
+        "string_a": "Mandatory style: flat vector illustration, only pink and midnight blue, light background, smiling characters, no brands, no text",
         "string_b": "",
         "delimiter": ". "
       }

@@ -1,118 +1,125 @@
-# Le workflow de l'organisation — une charte graphique imposée à toutes les images
+# The organization's workflow — a style guide enforced on every image
 
-Démonstration du module 2 de la série « Clic par clic » **Générer des images dans Open WebUI avec
-ComfyUI** : dans Open WebUI, l'utilisateur ne choisit que sa description ; tout le reste (modèle,
-taille, étapes, dossier des fichiers et désormais **charte graphique**) est fixé dans le workflow
-ComfyUI, qui devient un document de l'organisation, versionné.
+Demo code for module 2 of the "Click by Click" series **Image generation in Open WebUI with
+ComfyUI**: in Open WebUI, the user only chooses the description; everything else (model, size,
+steps, file folder and now the **style guide**) is set in the ComfyUI workflow, which becomes a
+versioned document of the organization.
 
-Vidéo : {{video}}
+Video: {{video}}
 
-## But
+## Goal
 
-- Dans ComfyUI, un nœud **Concaténer** (`StringConcatenate`) place la charte de l'organisation
-  devant chaque description : premier champ (`string_a`) : la charte ; second champ (`string_b`)
-  vide, rempli par Open WebUI ; délimiteur « . ». Sa sortie est reliée au texte de l'encodeur
-  (nœud 27).
-- Le préfixe d'enregistrement devient `openwebui/affiche` : les images de ce workflow ont leur
-  propre dossier.
-- Le graphe est testé dans ComfyUI, puis réexporté au format API sous un **nouveau nom**
-  (`affiches-v2.json`) : la version 1 reste disponible pour revenir en arrière.
-- Dans Open WebUI, la nouvelle version est téléversée et la ligne « Prompt* » de la correspondance
-  passe de `text` / `27` à `string_b` / `34` (le **piège du lien écrasé** : voir
-  `open-webui/correspondance-v2.md`).
+- In ComfyUI, a **Concatenate Text** node (`StringConcatenate`) puts the organization's style
+  guide in front of every description: first field (`string_a`): the style guide; second field
+  (`string_b`) empty, filled in by Open WebUI; delimiter ". ". Its output is linked to the
+  encoder's text (node 27).
+- The save prefix becomes `openwebui/poster`: the images of this workflow get their own folder.
+- The graph is tested in ComfyUI, then exported again in API format under a **new name**
+  (`posters-v2.json`): version 1 stays available for rolling back.
+- In Open WebUI, the new version is uploaded and the "Prompt*" row of the node mapping goes from
+  `text` / `27` to `string_b` / `34` (the **trap of the overwritten link**: see
+  `open-webui/node-mapping-v2.md`).
 
-Charte de la démonstration :
+Style guide of the demo:
 
-> Style imposé : illustration vectorielle plate, uniquement rose et bleu nuit, fond clair,
-> personnages souriants, aucune marque, aucun texte
+> Mandatory style: flat vector illustration, only pink and midnight blue, light background,
+> smiling characters, no brands, no text
 
-| Fichier | Contenu |
+| File | Content |
 |---|---|
-| `workflows/affiches-v1.json` | Version 1 au format API (celle du module 1 : la description va dans le texte du nœud 27) |
-| `workflows/affiches-v1.interface.json` | Version 1 au format de l'interface de ComfyUI (place libre en bas de la première colonne pour la concaténation) |
-| `workflows/affiches-v2.json` | Version 2 au format API, **telle qu'exportée dans la vidéo** : nœud 34 `StringConcatenate`, encodeur relié, préfixe `openwebui/affiche` |
-| `workflows/affiches-v2.interface.json` | Version 2 au format de l'interface (graphe à la fin de la vidéo) |
-| `workflows/affiches-v2.en.json`, `affiches-v2.de.json` | La même version 2, charte rédigée en anglais et en allemand (même structure, même correspondance) |
-| `open-webui/correspondance-v2.md` | Les six lignes de la correspondance, le piège du lien écrasé, le retour arrière |
-| `publier.py` | Publication par l'API d'Open WebUI : version 2, retour à la version 1, contrôle de la correspondance, essai |
+| `workflows/posters-v1.json` | Version 1 in API format (the one of module 1: the description goes into the text of node 27) |
+| `workflows/posters-v1.interface.json` | Version 1 in ComfyUI's interface format (free space at the bottom of the first column for the concatenation) |
+| `workflows/posters-v2.json` | Version 2 in API format, **as exported in the video**: node 34 `StringConcatenate`, encoder linked, prefix `openwebui/poster` |
+| `workflows/posters-v2.interface.json` | Version 2 in interface format (the graph at the end of the video) |
+| `workflows/posters-v2.fr.json`, `posters-v2.de.json` | The same version 2, style guide written in French and in German (same structure, same node mapping) |
+| `open-webui/node-mapping-v2.md` | The six rows of the node mapping, the trap of the overwritten link, rolling back |
+| `publish.py` | Publishing through Open WebUI's API: version 2, back to version 1, node mapping check, test |
 
-## Prérequis
+The French video shows the same workflow with French node titles and style guide
+(`affiches-v2.json`, prefix `openwebui/affiche`); this repository holds its English version, same
+structure, same node numbers.
 
-- Le serveur d'images du module 1 : ComfyUI v0.41 sur une carte graphique, modèle Z-Image Turbo
-  (Apache 2.0), branché dans Open WebUI 0.11 (page Images) —
+## Prerequisites
+
+- The image server of module 1: ComfyUI v0.41 on a graphics card, Z-Image Turbo model
+  (Apache 2.0), connected to Open WebUI 0.11 (Images page) —
   [`clic-par-clic-comfyui-01-brancher`](https://github.com/guilhem-/clic-par-clic-comfyui-01-brancher).
-- Le nœud `StringConcatenate` (inclus dans ComfyUI, aucun nœud personnalisé).
-- Un compte **administrateur** d'Open WebUI.
+- The `StringConcatenate` node (included in ComfyUI, no custom node).
+- An Open WebUI **administrator** account.
 
-## Installation pas à pas
+## Step by step
 
-### 1. Ajouter la charte, dans ComfyUI
+### 1. Add the style guide, in ComfyUI
 
-1. Ouvrez `workflows/affiches-v1.interface.json` (glisser-déposer dans l'interface).
-2. Double-cliquez sur une place libre du canevas, tapez `concat`, choisissez **Concaténer**, posez
-   le nœud.
-3. Premier champ : la charte ; délimiteur : `. ` (point, espace) ; second champ : vide.
-4. Reliez la sortie **CHAÎNE** au texte de l'encodeur « CLIP Text Encode » (nœud 27) : son champ
-   disparaît, sa valeur vient de la concaténation.
-5. Nœud « Enregistrer Image » : préfixe `openwebui/affiche`.
-6. **Testez** : une description dans le second champ, **Exécuter**. Puis videz ce champ.
-7. Menu **Fichier › Exporter (API)**, nom `affiches-v2`.
+1. Open `workflows/posters-v1.interface.json` (drag and drop it onto the interface).
+2. Double-click a free spot of the canvas, type `concat`, choose **Concatenate Text**, place the
+   node.
+3. First field: the style guide; delimiter: `. ` (period, space); second field: empty.
+4. Link the **STRING** output to the text of the "CLIP Text Encode" encoder (node 27): its field
+   disappears, its value comes from the concatenation.
+5. "Save Image" node: prefix `openwebui/poster`.
+6. **Test**: a description in the second field, **Run**. Then empty that field.
+7. Menu **File › Export (API)**, name `posters-v2`.
 
-Le numéro du nœud de concaténation (34 ici, le workflow s'arrêtant à 33) se lit sur son badge
-(Paramètres, « badge » : mode de badge d'identifiant de nœud, « Afficher tout ») et dans le fichier
-exporté.
+The number of the concatenation node (34 here, the workflow ending at 33) shows on its badge
+(Settings, "badge": Node ID badge mode, "Show all") and in the exported file.
 
-### 2. Publier, dans Open WebUI, à la main comme dans la vidéo
+### 2. Publish, in Open WebUI, by hand as in the video
 
-Panneau d'administration › Réglages › Images : « Workflow ComfyUI » › **Téléverser**
-`affiches-v2.json`, puis ligne « Prompt* » : clé `string_b`, ID des noeuds `34`. Enregistrer.
-Détail : `open-webui/correspondance-v2.md`.
+Admin Panel › Settings › Images: "ComfyUI Workflow" › **Upload** `posters-v2.json`, then the
+"Prompt*" row: key `string_b`, Node Ids `34`. Save. Details: `open-webui/node-mapping-v2.md`.
 
-### 2 bis. Publier par l'API
+### 2b. Publish through the API
 
 ```bash
-cp .env.example .env          # OWUI_URL, OWUI_JETON (administrateur), COMFYUI_URL…
-python publier.py --verifier  # contrôle des deux versions (et du piège, montré sur la version 2)
-python publier.py             # sauvegarde la configuration en place (images-avant.json), publie la version 2
-python publier.py --essai     # une image d'essai, générée par Open WebUI
-python publier.py --revenir   # republie la version 1
-python publier.py --retablir  # revient à la configuration sauvegardée
+cp .env.example .env           # OWUI_URL, OWUI_TOKEN (administrator), COMFYUI_URL…
+python publish.py --check      # check both versions (and the trap, shown on version 2)
+python publish.py              # backs up the current configuration (images-config.backup.json), publishes version 2
+python publish.py --test       # a test image, generated by Open WebUI
+python publish.py --rollback   # publishes version 1 again
+python publish.py --restore    # back to the saved configuration
 ```
 
-La page Images est un réglage **de toute l'instance** : `images-avant.json` garde la configuration
-précédente, clés comprises (fichier ignoré par git, ne le partagez pas).
+The Images page is a setting of **the whole instance**: `images-config.backup.json` keeps the
+previous configuration, keys included (file ignored by git, do not share it).
 
-## Essai
+For a French or German style guide, upload `posters-v2.fr.json` or `posters-v2.de.json` instead
+(same node mapping).
 
-Avec un compte utilisateur : nouvelle conversation, menu « Intégrations » › « Image », puis
-« Une illustration sans texte : une équipe qui fait une pause café sur la terrasse du bureau. »
-L'image suit la charte ; dépliez l'appel `generate_image` : la description rédigée par le modèle de
-conversation ne contient pas la charte, c'est le workflow qui la place devant elle.
+## Try it
 
-## Bon à savoir
+With a user account: new chat, "Integrations" menu › "Image", then "An illustration with no text:
+a team having a coffee break on the office terrace." The image follows the style guide; unfold the
+`generate_image` call: the description written by the chat model does not contain the style
+guide, the workflow puts it in front.
 
-- **Prompt négatif** : Open WebUI n'en transmet pas à ComfyUI (l'outil `generate_image` ne
-  l'envoie jamais) et Z-Image Turbo, réglé sans guidage (CFG 1), l'ignorerait. Les interdits
-  passent par la charte et par les consignes du modèle de conversation.
-- **La charte en premier** : le modèle de conversation rédige souvent une description très stylée
-  (« illustration éditoriale… semi-réaliste, palette harmonieuse… »). Ajoutée **après** elle, la
-  charte a perdu à l'essai (image sans la palette) ; placée **devant**, formulée « Style imposé :
-  … uniquement rose et bleu nuit… », elle l'emporte.
-- **Formulation de la charte** : à CFG 1, un interdit n'est qu'une indication. À l'essai, « rose
-  framboise » faisait apparaître une enseigne « FRAMBOISHE », et une scène de stand de salon des
-  bannières au texte écorché ; « rose et bleu nuit » et des scènes sans support d'écriture donnent
-  des images sans texte. Testez la charte sur plusieurs descriptions avant de la publier.
-- Traitez le workflow comme un document : rangé dans un dépôt, avec ses versions, testé avant
-  publication, correspondance relue à chaque version, ancienne version prête pour revenir en arrière.
+## Good to know
 
-## Série
+- **Negative prompt**: Open WebUI does not send one to ComfyUI (the `generate_image` tool never
+  sends it) and Z-Image Turbo, tuned without guidance (CFG 1), would ignore it. What is forbidden
+  goes into the style guide and into the chat model's instructions.
+- **The style guide first**: the chat model often writes a very stylized description ("editorial
+  illustration… semi-realistic, harmonious palette…"). Added **after** it, the style guide lost in
+  our tests (image without the palette); placed **in front**, worded "Mandatory style: … only pink
+  and midnight blue…", it wins. A description that names its own colors can still win: in the
+  English shoot, "a palette of terracotta, sage green, cream and warm blue" written by the chat
+  model overrode the style guide; the chat model's instructions should forbid colors in
+  descriptions (module 4 does it).
+- **Wording of the style guide**: at CFG 1, a prohibition is only a hint. In our tests, a
+  "raspberry pink" brought up a sign with a mangled word, and a trade show booth scene gave
+  banners with mangled text; "pink and midnight blue" and scenes without anything to write on give
+  images without text. Test the style guide on several descriptions before publishing it.
+- Treat the workflow as a document: stored in a repository, with its versions, tested before
+  publishing, node mapping reviewed at every version, previous version ready for rolling back.
 
-- Module précédent : **Brancher ComfyUI dans Open WebUI** —
+## Series
+
+- Previous module: **Connecting ComfyUI to Open WebUI** —
   [`clic-par-clic-comfyui-01-brancher`](https://github.com/guilhem-/clic-par-clic-comfyui-01-brancher).
-- Module suivant : **Retoucher une image** (second workflow, modèle de retouche) —
+- Next module: **Editing an image** (a second workflow, an editing model) —
   [`clic-par-clic-comfyui-03-retouche`](https://github.com/guilhem-/clic-par-clic-comfyui-03-retouche).
 
-## Licence
+## License
 
-MIT (voir `LICENSE`). ComfyUI : GPL-3.0 ; modèle Z-Image Turbo : Apache 2.0 ; Open WebUI : sa
-propre licence (le code cité dans la vidéo reste le sien, il n'est pas recopié ici).
+MIT (see `LICENSE`). ComfyUI: GPL-3.0; Z-Image Turbo model: Apache 2.0; Open WebUI: its own
+license (the code quoted in the video stays theirs and is not copied here).
