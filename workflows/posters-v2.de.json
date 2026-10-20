@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 125795286251320,
+      "seed": 657339941800853,
       "steps": 8,
       "cfg": 1,
       "sampler_name": "res_multistep",
