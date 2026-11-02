@@ -43,7 +43,7 @@ structure, same node numbers.
 
 - The image server of module 1: ComfyUI v0.41 on a graphics card, Z-Image Turbo model
   (Apache 2.0), connected to Open WebUI 0.11 (Images page) —
-  [`clic-par-clic-comfyui-01-brancher`](https://github.com/guilhem-/clic-par-clic-comfyui-01-brancher).
+  [`clic-par-clic-comfyui-01-brancher`](https://github.com/guilhembon/clic-par-clic-comfyui-01-brancher).
 - The `StringConcatenate` node (included in ComfyUI, no custom node).
 - An Open WebUI **administrator** account.
 
@@ -115,9 +115,9 @@ guide, the workflow puts it in front.
 ## Series
 
 - Previous module: **Connecting ComfyUI to Open WebUI** —
-  [`clic-par-clic-comfyui-01-brancher`](https://github.com/guilhem-/clic-par-clic-comfyui-01-brancher).
+  [`clic-par-clic-comfyui-01-brancher`](https://github.com/guilhembon/clic-par-clic-comfyui-01-brancher).
 - Next module: **Editing an image** (a second workflow, an editing model) —
-  [`clic-par-clic-comfyui-03-retouche`](https://github.com/guilhem-/clic-par-clic-comfyui-03-retouche).
+  [`clic-par-clic-comfyui-03-retouche`](https://github.com/guilhembon/clic-par-clic-comfyui-03-retouche).
 
 ## License
 
